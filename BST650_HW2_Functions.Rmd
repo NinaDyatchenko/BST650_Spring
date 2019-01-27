@@ -1,0 +1,70 @@
+---
+title: "Homework 2. Functions"
+author: "Nina Dyatchenko"
+date: "January 27th, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### Quiz
+
+1) What are the three components of a function?
+
+Body
+Arguments
+Environment
+
+2) What does the following code return?
+```{r}
+x <- 10
+f1 <- function(x) {
+  function() {
+    x + 10
+  }
+}
+f1(1)()
+```
+The function returns a number 11. The function sums a given numeric argument with a number 10.
+
+3) How would you more typically write this code?
+```{r}
+`+`(1, `*`(2, 3))
+
+1+ 2*3
+```
+
+4) How could you make this call easier to read?
+```{r}
+mean(, TRUE, x = c(1:10, NA))
+
+mean(x = c(1:10, NA), na.rm = TRUE)
+```
+
+5) Does the following function throw an error when called? Why/why not?
+```{r}
+f2 <- function(a, b) {
+  a * 10
+}
+f2(10, stop("This is an error!"))
+```
+No, the error does not occure becouse the argument b is not used in the environment of the function.
+
+6) What is an infix function? How do you write it? 
+Infix function thet is input between the two arguments. Infix functions are + , - , *, /, ^ and others.To write an infix function, the new operator has to be inclosed with %.
+
+What’s a replacement function? How do you write it?
+```{r}
+`second<-` <- function(x, value) {
+  x[2] <- value
+  x
+}
+x <- 1:10
+second(x) <- 5L
+x
+
+```
+Replacement function acts like it modify its arguments in place. The name of the function is inclosed by  backticks and ends with "get" operator <- as such: `name<-`. 
+
+7) What function do you use to ensure that a cleanup action occurs regardless of how a function terminates?
