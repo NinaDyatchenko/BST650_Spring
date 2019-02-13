@@ -1,0 +1,47 @@
+---
+title: "Data_Structures_01152019"
+author: "Nina Dyatchenko"
+date: "February 13, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#  Likelihood 2/5/2019 in class
+Likelihood of 7 successes out of 11 trials. Binomial experiment:
+```{r}
+Lbin_11_7 <-  function(p){
+  p^7 * (1-p)^4
+}
+curve(Lbin_11_7, from = 0, to = 1)
+
+Lbin_11_7 <- function(p){
+  p^7 * (1-p)^4
+}
+```
+#  Homework 3
+
+Squared slope (derivative) for 7 successess out of 11 trials:
+```{r}
+DerivL_11_7 <- function(p){
+  ((7-11*p)/(p*(1-p)))^2
+}
+
+mean(DerivL_11_7(seq(from = 0.001, to = 0.999, by = 0.001)))
+```
+The mean squared slope is 106123.5
+
+Likelihood of 70 successes out of 110 trials. Binomial experiment:
+```{r}
+DerivL_110_70 <- function(p){
+  ((70-110*p)/(p*(1-p)))^2
+}
+mean(DerivL_110_70(seq(from = 0.001, to = 0.999, by = 0.001)))
+```
+
+The mean squared slope for 70 successes out of 110 trials is 10612354. Which is
+100 times larger than average slope of 7 successes out of 11 trials.
+
+Conclusion: larger sample size n contributes to a stipper slope. 
