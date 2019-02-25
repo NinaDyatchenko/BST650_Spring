@@ -1,0 +1,54 @@
+---
+title: "Data_Structures_01152019"
+author: "Nina Dyatchenko"
+date: "February 24, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Class 2/19/19 and Homework 2/24/19
+
+wrong:
+```{r}
+pois_fn <- function(x, rate){
+  (rate^x) * exp(-rate) / factorial(x)
+}  # infinity devided by infinity
+pois_fn(100, 200)
+pois_fn(200, 150)  # P[x >= 200 | rate = 150]
+```
+Works:
+```{r}
+pois2_fn <- function(x, rate){
+  logFact <- sum (log(1:x) )
+  exp( x * log(rate) - rate - logFact )
+}
+pois2_fn(200, 150)
+```
+### February 24th, 2019
+### Poisson distribution
+```{r}
+pois3_fn <- function(x, rate){
+  exp( x * log(rate) - rate - lgamma(x+1))
+}
+pois3_fn(200, 150)
+```
+### Poisson distribution from {stats}
+dpois(x, lambda, log = FALSE)
+```{r}
+dpois(200, 150)
+```
+
+Transform logit into exponential function:
+```{r}
+p <- seq(from = 0.0001, to = 0.9999, length.out = 1000)
+y_logit <- log(p/(1-p))
+plot(p, y_logit)
+
+p_logit <- exp(p)
+y <- exp(p_logit)
+
+plot(p_logit, y)
+```
