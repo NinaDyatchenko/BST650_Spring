@@ -1,0 +1,84 @@
+---
+title: "Gamma and Chi-Square distributions"
+author: "Nina Dyatchenko"
+date: "March 19, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Gamma distribution
+```{r}
+x <- 1:20
+Gamma_fn <- function(x, a, theta, xLim = 20){
+  
+  x <- 1:xLim
+  
+  const <- 1 / (factorial(a - 1) * theta ^ a)
+  kern  <- x ^ (a - 1) * exp(-x / theta)
+  
+  const * kern
+  
+}
+```
+
+### Changing Alpha from 1 to 10
+
+```{r}
+plot(x, Gamma_fn(x, 1, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 2, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 3, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 4, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 5, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 6, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 7, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 8, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 9, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 10, 2), ylim = c(0, 0.5))
+```
+
+
+### Changing Theta from 1 to 10
+
+```{r}
+plot(x, Gamma_fn(x, 1, 1), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 2), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 3), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 4), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 5), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 6), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 7), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 8), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 9), ylim = c(0, 0.5))
+plot(x, Gamma_fn(x, 1, 10), ylim = c(0, 0.5))
+```
+
+# Chi-square Distribution
+
+```{r}
+x <- 1:20
+chisq_fn <- function(x, nu, xLim = 20){
+  
+  x <- 1:xLim
+  
+  const <- 1 / ( 2^(nu/2) * factorial(nu/2 - 1) )
+  kern  <- x ^ (nu/2 - 1) * exp(-x / 2)
+  
+  const * kern
+}
+```
+
+### Changing Nu from 1 to 10
+
+```{r}
+plot(x, chisq_fn(x, 1), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 2), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 3), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 4), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 6), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 8), ylim = c(0, 0.5))
+plot(x, chisq_fn(x, 10), ylim = c(0, 0.5))
+```
+
