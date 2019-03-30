@@ -1,0 +1,12 @@
+name: shinytest
+title:
+username:
+account: ninadyatchenko
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 826294
+bundleId: 1975564
+url: https://ninadyatchenko.shinyapps.io/shinytest/
+when: 1553962067.13081
+asMultiple: FALSE
+asStatic: FALSE
